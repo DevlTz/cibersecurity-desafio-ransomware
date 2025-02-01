@@ -1,22 +1,19 @@
 import os
 import pyaes
-
-## abrir o arquivo criptografado
-file_name = "teste.txt.ransomwaretroll"
+## ABRIR O ARQUIVO
+file_name = 'texto.txt'
 file = open(file_name, "rb")
 file_data = file.read()
 file.close()
-
-## chave para descriptografia
-key = b"testeransomwares"
+## CHAVE DE DESCRIPTOGRAFIA
+key = b"1234567890123456"
 aes = pyaes.AESModeOfOperationCTR(key)
-decrypt_data = aes.decrypt(file_data)
-
-## remover o arquivo criptografado
+decrypt_data =aes.decrypt(file_data)
+## REMOVE O ARQUIVO CRIPTOGRAFADO
 os.remove(file_name)
 
-## criar o arquivo descriptografado
-new_file = "teste.txt"
+## CRIAR UM NOVO ARQUIVO DESCRIPTOGRAFADO
+new_file_name = "texto_novo.txt"
 new_file = open(f'{new_file}', "wb")
 new_file.write(decrypt_data)
 new_file.close()
